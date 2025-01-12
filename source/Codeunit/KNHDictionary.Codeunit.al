@@ -5,7 +5,7 @@ codeunit 50500 KNHDictionary
 {
     trigger OnRun()
     begin
-        GetItemDict();
+        this.GetItemDict();
     end;
 
     var
@@ -18,13 +18,13 @@ codeunit 50500 KNHDictionary
         Item: Record Item;
     begin
         if Item.FindFirst() then begin
-            DetailItemDict.Add(1, Item.Description);
-            DetailItemDict.Add(2, Item."Base Unit of Measure");
-            DetailItemDict.Add(3, Format(Item."Unit Price"));
-            ItemDictionary.Add(Item."No.", DetailItemDict);
-            //Clear(DetailItemDict);
+            this.DetailItemDict.Add(1, Item.Description);
+            this.DetailItemDict.Add(2, Item."Base Unit of Measure");
+            this.DetailItemDict.Add(3, Format(Item."Unit Price"));
+            this.ItemDictionary.Add(Item."No.", this.DetailItemDict);
+            //Clear(this.DetailItemDict);
         end;
-        GetDictValues();
+        this.GetDictValues();
     end;
 
     /// <summary>
@@ -37,9 +37,9 @@ codeunit 50500 KNHDictionary
         I: Integer;
     begin
         I := 1;
-        foreach DetailItemDict in ItemDictionary.Values() do begin
-            foreach Detail in DetailItemDict.Values() do begin
-                ItemDictionary.Keys.Get(I, ItemNo);
+        foreach DetailItemDict in this.ItemDictionary.Values() do begin
+            foreach Detail in this.DetailItemDict.Values() do begin
+                this.ItemDictionary.Keys.Get(I, ItemNo);
                 Message(Format(ItemNo) + ':' + Detail);
             end;
             I += 1;
