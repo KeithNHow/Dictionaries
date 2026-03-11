@@ -1,12 +1,15 @@
+/// <summary>
+/// Page Extension has an action that runs codeunit KNH Dictionary which demonstrates a dictionary within a dictionary.
+/// </summary>
 pageextension 50500 KNHItem extends "Item List"
 {
     actions
     {
         addbefore(Reports)
         {
-            group(Special)
+            group(KNHSpecial)
             {
-                action(Dictionary)
+                action(KNHDictionary)
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Dictionary';

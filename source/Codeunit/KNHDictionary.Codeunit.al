@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit KNH Dictionary (ID 50100).
+/// Codeunit is called from the action on the page extension. It demonstrates a dictionary within a dictionary. The first dictionary has a key of Item No. and the value is another dictionary. The second dictionary has an integer key and text value which are the item details. The GetDictValues procedure loops through the dictionaries and displays the item details in a message box.
 /// </summary>
 codeunit 50500 KNHDictionary
 {
@@ -22,14 +22,10 @@ codeunit 50500 KNHDictionary
             this.DetailItemDict.Add(2, Item."Base Unit of Measure");
             this.DetailItemDict.Add(3, Format(Item."Unit Price"));
             this.ItemDictionary.Add(Item."No.", this.DetailItemDict);
-            //Clear(this.DetailItemDict);
         end;
         this.GetDictValues();
     end;
 
-    /// <summary>
-    /// GetDictValues.
-    /// </summary>
     local procedure GetDictValues()
     var
         Detail: Text;
